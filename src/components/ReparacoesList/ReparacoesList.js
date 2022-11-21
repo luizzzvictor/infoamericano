@@ -1,6 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Accordion, Container, ListGroup, Spinner } from "react-bootstrap";
+import {
+  Accordion,
+  Badge,
+  Container,
+  ListGroup,
+  Spinner,
+} from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 function ReparacoesList({ apiURL }) {
@@ -46,18 +52,47 @@ function ReparacoesList({ apiURL }) {
                         "success") ||
                       (reparacao.estado_cumprimento === "Descumprida" &&
                         "danger") ||
-                      (reparacao.estado_cumprimento === "Pendente de Cumprimento" &&
-                        "warning")
-                        ||
-                      (reparacao.estado_cumprimento === "Parcialmente cumprida" &&
+                      (reparacao.estado_cumprimento ===
+                        "Pendente de cumprimento" &&
+                        "warning") ||
+                      (reparacao.estado_cumprimento ===
+                        "Parcialmente cumprida" &&
                         "info")
                     }
                     style={{ textAlign: "justify", cursor: "pointer" }}
+                    className="d-flex justify-content-center align-items-center"
                     onClick={() => {
                       navigate(`/reparacoes/${reparacao._id}`);
                     }}
                   >
-                    {reparacao.reparacao}
+                    <div className="ms-2 me-auto">{reparacao.reparacao}</div>
+                    <Badge
+                      bg="light"
+                      pill
+                      className="ms-3"
+                      style={{ textAlign: "center" }}
+                      data-toggle="tooltip"
+                      data-placement="bottom"
+                      title={(reparacao.estado_cumprimento === "Cumprida" && "Cumprida") ||
+                        (reparacao.estado_cumprimento === "Descumprida" &&
+                          "Descumprida") ||
+                        (reparacao.estado_cumprimento ===
+                          "Pendente de cumprimento" &&
+                          "Pendente de cumprimento") ||
+                        (reparacao.estado_cumprimento ===
+                          "Parcialmente cumprida" &&
+                          "Parcialmente cumprida")}
+                    >
+                      {(reparacao.estado_cumprimento === "Cumprida" && "✅") ||
+                        (reparacao.estado_cumprimento === "Descumprida" &&
+                          "👎🏾") ||
+                        (reparacao.estado_cumprimento ===
+                          "Pendente de cumprimento" &&
+                          "⚠️") ||
+                        (reparacao.estado_cumprimento ===
+                          "Parcialmente cumprida" &&
+                          "🤏🏾")}
+                    </Badge>
                   </ListGroup.Item>
                 );
               }
