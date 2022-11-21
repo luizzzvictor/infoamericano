@@ -1,11 +1,17 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Accordion, Container, ListGroup, Spinner } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import {
+  Accordion,
+  Container,
+  ListGroup,
+  Spinner,
+} from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 function ReparacoesList({ apiURL }) {
   const [reparacoes, setReparacoes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate()
 
   useEffect(() => {
     try {
@@ -43,11 +49,12 @@ function ReparacoesList({ apiURL }) {
                     variant={
                       reparacao.estado_cumprimento === "Cumprida" && "success"
                     }
-                    style={{ textAlign: "justify" }}
+                    style={{ textAlign: "justify", cursor:"pointer" }}
+                    onClick={()=> {navigate(`/reparacoes/${reparacao._id}`)}}
                   >
-                    <Link to={`/reparacoes/${reparacao._id}`} className="nav-link" style={{display:"inline-block"}}>
-                    {reparacao.reparacao}
-                    </Link>
+                    
+                      {reparacao.reparacao}
+                   
                   </ListGroup.Item>
                 );
               }
