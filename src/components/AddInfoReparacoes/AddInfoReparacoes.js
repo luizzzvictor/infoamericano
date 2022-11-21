@@ -4,7 +4,7 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-function AddInfoReparacoes({ apiURL, id, form, setForm, reparacoes }) {
+function AddInfoReparacoes({ apiURL, id, form, setForm, reparacao }) {
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -15,7 +15,7 @@ function AddInfoReparacoes({ apiURL, id, form, setForm, reparacoes }) {
     e.preventDefault();
 
     try {
-      const clone = { ...reparacoes };
+      const clone = { ...reparacao };
       delete clone._id;
 
       const bodyNovaInfo = clone.infos_cumprimento.push(form);
@@ -106,11 +106,11 @@ function AddInfoReparacoes({ apiURL, id, form, setForm, reparacoes }) {
                 onChange={handleChange}
               >
                 <option value="0">Selecione uma opção</option>
-                <option value="Pendente de Cumprimento">
+                <option value="Pendente de cumprimento">
                   Pendente de Cumprimento
                 </option>
                 <option value="Cumprida">Cumprida</option>
-                <option value="Parcialmente Cumprida">
+                <option value="Parcialmente cumprida">
                   Parcialmente Cumprida
                 </option>
                 <option value="Descumprida">Descumprida</option>
