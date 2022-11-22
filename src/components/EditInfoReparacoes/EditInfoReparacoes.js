@@ -17,7 +17,7 @@ function EditInfoReparacoes({ id, apiURL, form, setForm }) {
   // -------- USE EFFECT PARA REQUISIÇÃO --------
   useEffect(() => {
     const fetchReparacao = async () => {
-      const response = await axios.get(`${apiURL}/{id}`);
+      const response = await axios.get(`${apiURL}/${id}`);
       setForm(response.data);
     };
     fetchReparacao();
@@ -33,9 +33,9 @@ function EditInfoReparacoes({ id, apiURL, form, setForm }) {
     e.preventDefault();
 
     try {
-      const clone = { ...form }
-      
-      delete clone._id
+      const clone = { ...form };
+
+      delete clone._id;
 
       await axios.put(`${apiURL}/${id}`, form);
 
@@ -114,7 +114,9 @@ function EditInfoReparacoes({ id, apiURL, form, setForm }) {
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Informações Relevantes sobre o Cumprimento</Form.Label>
+              <Form.Label>
+                Informações Relevantes sobre o Cumprimento
+              </Form.Label>
               <Form.Control
                 as="textarea"
                 placeholder="Insira as informações relevantes sobre o cumprimento da Medida de Reparação"
