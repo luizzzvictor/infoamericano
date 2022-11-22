@@ -74,7 +74,7 @@ function EditInfoReparacoes({ id, apiURL, form, setForm }) {
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>
-            Cadastrar nova informação sobre cumprimento de medidas
+            Editar informações sobre cumprimento de medidas
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -83,53 +83,62 @@ function EditInfoReparacoes({ id, apiURL, form, setForm }) {
               <Form.Label>Tribunal</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Insira o nome completo do funcionário"
-                name="name"
-                value={form.name}
+                placeholder="Insira o nome do Tribunal de origem da informação"
+                name="tribunal"
+                value={form.tribunal}
                 onChange={handleChange}
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Número de telefone</Form.Label>
+              <Form.Label>Unidade Judiciária</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Insira o número de telefone para contato com DDD"
-                name="phone"
-                value={form.phone}
+                placeholder="Insira a Unidade Judiciária prestadora das informações"
+                name="unidade_judiciaria"
+                value={form.unidade_judiciaria}
                 onChange={handleChange}
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Endereço de e-mail</Form.Label>
+              <Form.Label>Cargo do responsável pelas informações</Form.Label>
               <Form.Control
-                type="email"
-                placeholder="Insira o endereço de e-mail válido para contato"
+                type="text"
+                placeholder="Insira o Cargo do Responsável"
                 name="email"
                 value={form.email}
                 onChange={handleChange}
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Remuneração por mês</Form.Label>
+              <Form.Label>Informações Relevantes sobre o Cumprimento</Form.Label>
               <Form.Control
-                type="number"
-                placeholder="Insira o valor da remuneração mensal"
-                name="salary"
-                value={form.salary}
+                as="textarea"
+                placeholder="Insira as informações relevantes sobre o cumprimento da Medida de Reparação"
+                name="infos_relevantes"
+                value={form.infos_relevantes}
                 onChange={handleChange}
               />
             </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Status</Form.Label>
-              <Form.Select name="status" onChange={handleChange}>
+            <Form.Group>
+              <Form.Label>
+                Notificar Alteração/Manutenção do Status de Cumprimento
+              </Form.Label>
+              <Form.Select
+                name="notificar_status_cumprimento"
+                onChange={handleChange}
+              >
                 <option value="0">Selecione uma opção</option>
-                <option value="Disponível">Disponível</option>
-                <option value="Alocado">Alocado</option>
-                <option value="De Férias">De Férias</option>
-                <option value="De Licença">De Licença</option>
+                <option value="Pendente de cumprimento">
+                  Pendente de Cumprimento
+                </option>
+                <option value="Cumprida">Cumprida</option>
+                <option value="Parcialmente cumprida">
+                  Parcialmente Cumprida
+                </option>
+                <option value="Descumprida">Descumprida</option>
               </Form.Select>
             </Form.Group>
-            <Button variant="success" type="submit">
+            <Button className="mt-4" variant="success" type="submit">
               Atualizar Informação
             </Button>
           </Form>
