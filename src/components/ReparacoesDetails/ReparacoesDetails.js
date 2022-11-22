@@ -44,14 +44,10 @@ function ReparacoesDetails({ apiURL, form, setForm }) {
     );
   };
 
-  // -------- RENDERIZAÇÃO DE HTML --------
-  return (
-    <Container
-      style={{ height: "90vh" }}
-      className="d-flex justify-content-center align-items-center"
-    >
-      {isLoading && <Spinner animation="border" />}
-      {!isLoading && (
+  // mapeia as arrays de infos dentro do caso
+ {/* const allInfos = reparacao.infos_cumprimento.map((info) => {
+    return (
+      <Container className="my-4 d-flex justify-content-center align-items-center">
         <Card className="text-center w-100">
           <Card.Header>
             <Card.Title className="m-0">
@@ -63,15 +59,15 @@ function ReparacoesDetails({ apiURL, form, setForm }) {
               <Col className="text-center">
                 <Card.Text>
                   <strong> Tribunal Informante:</strong> <br />
-                  {reparacao.infos_cumprimento[0].tribunal}
+                  {info.tribunal}
                 </Card.Text>
                 <Card.Text>
                   <strong> Unidade interna do Tribunal:</strong> <br />
-                  {reparacao.infos_cumprimento[0].unidade_judiciaria}
+                  {info.unidade_judiciaria}
                 </Card.Text>
                 <Card.Text>
                   <strong> Cargo do Usuário:</strong> <br />
-                  {reparacao.infos_cumprimento[0].cargo_informante}
+                  {info.cargo_informante}
                 </Card.Text>
                 <Card.Text>
                   <strong>
@@ -80,7 +76,7 @@ function ReparacoesDetails({ apiURL, form, setForm }) {
                     Reparação:
                   </strong>{" "}
                   <br />
-                  {reparacao.infos_cumprimento[0].infos_relevantes}
+                  {info.infos_relevantes}
                 </Card.Text>
                 <Card.Text>
                   <strong>
@@ -88,7 +84,7 @@ function ReparacoesDetails({ apiURL, form, setForm }) {
                     Notificar alteração do status de cumprimento:
                   </strong>{" "}
                   <br />
-                  {reparacao.infos_cumprimento[0].notificar_status_cumprimento}
+                  {info.notificar_status_cumprimento}
                 </Card.Text>
               </Col>
             </Row>
@@ -117,8 +113,42 @@ function ReparacoesDetails({ apiURL, form, setForm }) {
             </Row>
           </Card.Body>
         </Card>
-      )}
-    </Container>
+      </Container>
+    );
+  });
+*/}
+  // -------- RENDERIZAÇÃO DE HTML --------
+  return (
+    <>
+      <Container className="p-4 my-4 text-bg-secondary text-white">
+        <Row>
+          <Col>
+            <Card.Header>
+              <Card.Title className="m-4">
+                <h1> {reparacao.caso}</h1>
+              </Card.Title>
+            </Card.Header>
+          </Col>
+        </Row>
+      </Container>
+      <Container className="bg-light border">
+        <Row>
+          <Col sm={10}>
+            <h6> {reparacao.reparacao}</h6>
+          </Col>
+          <Col sm={2}>
+            <h5>
+              <strong>Status Atual:</strong> <br />{" "}
+              {reparacao.estado_cumprimento}
+            </h5>
+          </Col>
+        </Row>
+      </Container>
+      <Container>
+        {isLoading && <Spinner className="mt-4" animation="border" />}
+        {!isLoading && <Container>{/*allInfos*/}</Container>}
+      </Container>
+    </>
   );
 }
 
