@@ -18,7 +18,7 @@ function AddInfoReparacoes({ apiURL, id, reparacao, setReparacao }) {
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
     // console.log(e.target.value)
-    console.log(form);
+    // console.log(form);
   };
 
   const handleSubmit = async (e) => {
