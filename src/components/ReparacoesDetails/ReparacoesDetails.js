@@ -17,10 +17,13 @@ function ReparacoesDetails({ apiURL, form, setForm }) {
     try {
       const fetchReparacao = async () => {
         const response = await axios.get(`${apiURL}/${id}`);
+   
         setReparacao(response.data);
         setIsLoading(false);
+        
       };
       fetchReparacao();
+      
     } catch (error) {
       console.log(error);
     }
@@ -152,13 +155,14 @@ function ReparacoesDetails({ apiURL, form, setForm }) {
         </Row>
       </Container>
       <Container>
-        {/* <AddInfoReparacoes
+        <AddInfoReparacoes
           apiURL={apiURL}
           form={form}
           setForm={setForm}
           reparacao={reparacao}
           id={id}
-        /> */}
+          setReparacao={setReparacao}
+        />
       </Container>
       <Container>
         {isLoading && <Spinner className="mt-4" animation="border" />}

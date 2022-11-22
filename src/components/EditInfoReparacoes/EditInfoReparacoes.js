@@ -19,7 +19,7 @@ function EditInfoReparacoes({ id, apiURL, form, setForm }) {
     const fetchReparacao = async () => {
       const response = await axios.get(`${apiURL}/${id}`);
       setForm(response.data);
-      console.log(form, "❤️")
+      
     };
     fetchReparacao();
   }, [apiURL, id]);
@@ -27,7 +27,7 @@ function EditInfoReparacoes({ id, apiURL, form, setForm }) {
   // monitoramento dos inputs do formulário
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
-    console.log(form)
+    
   };
 
   // envio do formulário
