@@ -1,14 +1,24 @@
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-function AddInfoReparacoes({ apiURL, id, form, setForm, reparacao }) {
+function AddInfoReparacoes({ apiURL, id, reparacao, setReparacao }) {
   const navigate = useNavigate();
+
+  const [form, setForm] = useState({
+    tribunal: "",
+    unidade_judiciaria: "",
+    cargo_informante: "",
+    infos_relevantes: "",
+    notificar_status_cumprimento: "",
+  });
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+    // console.log(e.target.value)
+    // console.log(form);
   };
 
   const handleSubmit = async (e) => {
@@ -18,11 +28,14 @@ function AddInfoReparacoes({ apiURL, id, form, setForm, reparacao }) {
       const clone = { ...reparacao };
       delete clone._id;
 
-      const bodyNovaInfo = clone.infos_cumprimento.push(form);
+      clone.infos_cumprimento.push(form);
 
-      await axios.put(`${apiURL}/${id}`, bodyNovaInfo);
+      console.log(clone);
 
-      navigate(`${apiURL}/${id}`);
+      await axios.put(`${apiURL}/${id}`, clone);
+      const response = await axios.get(`${apiURL}/${id}`);
+
+      setReparacao(response.data);
 
       toast.success("Novas informações cadastradas!", {
         position: "top-right",
@@ -76,8 +89,8 @@ function AddInfoReparacoes({ apiURL, id, form, setForm, reparacao }) {
               <Form.Control
                 type="text"
                 placeholder="Insira o Cargo"
-                name="email"
-                value={form.email}
+                name="cargo_informante"
+                value={form.cargo_informante}
                 onChange={handleChange}
               />
             </Form.Group>
@@ -86,7 +99,7 @@ function AddInfoReparacoes({ apiURL, id, form, setForm, reparacao }) {
         <Row>
           <Col>
             <Form.Group className="mb-3">
-              <Form.Label>Remuneração por mês</Form.Label>
+              <Form.Label>Informações sobre a medida de reparacao</Form.Label>
               <Form.Control
                 as="textarea"
                 placeholder="Insira as informações relevantes sobre o cumprimento da Medida de Reparação"
@@ -107,11 +120,11 @@ function AddInfoReparacoes({ apiURL, id, form, setForm, reparacao }) {
               >
                 <option value="0">Selecione uma opção</option>
                 <option value="Pendente de cumprimento">
-                  Pendente de Cumprimento
+                  Pendente de cumprimento
                 </option>
                 <option value="Cumprida">Cumprida</option>
                 <option value="Parcialmente cumprida">
-                  Parcialmente Cumprida
+                  Parcialmente cumprida
                 </option>
                 <option value="Descumprida">Descumprida</option>
               </Form.Select>

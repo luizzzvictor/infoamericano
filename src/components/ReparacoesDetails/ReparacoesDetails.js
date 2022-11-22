@@ -17,6 +17,7 @@ function ReparacoesDetails({ apiURL, form, setForm }) {
     try {
       const fetchReparacao = async () => {
         const response = await axios.get(`${apiURL}/${id}`);
+
         setReparacao(response.data);
         setIsLoading(false);
       };
@@ -99,8 +100,8 @@ function ReparacoesDetails({ apiURL, form, setForm }) {
                   <EditInfoReparacoes
                     id={id}
                     apiURL={apiURL}
-                    form={form}
-                    setForm={setForm}
+                    reparacao={reparacao}
+                    setReparacao={setReparacao}
                   />
                 </Col>
                 <Col>
@@ -156,8 +157,9 @@ function ReparacoesDetails({ apiURL, form, setForm }) {
           apiURL={apiURL}
           form={form}
           setForm={setForm}
-          reparacao={reparacao}
           id={id}
+          reparacao={reparacao}
+          setReparacao={setReparacao}
         />
       </Container>
       <Container>

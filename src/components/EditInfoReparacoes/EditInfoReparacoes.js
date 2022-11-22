@@ -4,8 +4,16 @@ import { Button, Form, Modal } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-function EditInfoReparacoes({ id, apiURL, form, setForm }) {
+function EditInfoReparacoes({ id, apiURL, reparacao, setReparacao}) {
   const navigate = useNavigate();
+
+  const [form, setForm] = useState({
+    tribunal: "",
+    unidade_judiciaria: "",
+    cargo_informante: "",
+    infos_relevantes: "",
+    notificar_status_cumprimento: "",
+  });
 
   // uso do modal
   const [show, setShow] = useState(false);
@@ -15,17 +23,21 @@ function EditInfoReparacoes({ id, apiURL, form, setForm }) {
   const handleShow = () => setShow(true);
 
   // -------- USE EFFECT PARA REQUISIÇÃO --------
-  useEffect(() => {
-    const fetchReparacao = async () => {
-      const response = await axios.get(`${apiURL}/${id}`);
-      setForm(response.data);
-    };
-    fetchReparacao();
-  }, [apiURL, setForm, id]);
+  // useEffect(() => {
+  //   const fetchReparacao = async () => {
+  //     const response = await axios.get(`${apiURL}/${id}`);
+  //     console.log(response.data)
+  //     // setForm(response.data);
+      
+  //   };
+  //   fetchReparacao();
+  // }, [apiURL, id]);
 
   // monitoramento dos inputs do formulário
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+    console.log(form)
+    
   };
 
   // envio do formulário
@@ -33,14 +45,18 @@ function EditInfoReparacoes({ id, apiURL, form, setForm }) {
     e.preventDefault();
 
     try {
-      const clone = { ...form };
+      const clone = { ...reparacao };
 
       delete clone._id;
 
-      await axios.put(`${apiURL}/${id}`, form);
+      clone.infos_cumprimento.push(form);
+
+      console.log(clone)
+
+      // await axios.put(`${apiURL}/${id}`, clone);
 
       setShow(false);
-      navigate("/reparacoes/:id");
+      // navigate(`/reparacoes/${id}`);
       toast.success(
         "Informação sobre cumprimento de medidas atualizada com sucesso!",
         {
@@ -108,8 +124,8 @@ function EditInfoReparacoes({ id, apiURL, form, setForm }) {
               <Form.Control
                 type="text"
                 placeholder="Insira o Cargo do Responsável"
-                name="email"
-                value={form.email}
+                name="cargo_informante"
+                value={form.cargo_informante}
                 onChange={handleChange}
               />
             </Form.Group>

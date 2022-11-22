@@ -15,7 +15,6 @@ function ReparacoesList({ apiURL }) {
   const [reparacoes, setReparacoes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
-  let counter = 0;
 
   useEffect(() => {
     try {
