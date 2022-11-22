@@ -9,6 +9,8 @@ function AddInfoReparacoes({ apiURL, id, form, setForm, reparacao }) {
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+    // console.log(e.target.value)
+    console.log(form);
   };
 
   const handleSubmit = async (e) => {
@@ -22,7 +24,7 @@ function AddInfoReparacoes({ apiURL, id, form, setForm, reparacao }) {
 
       await axios.put(`${apiURL}/${id}`, bodyNovaInfo);
 
-      navigate(`${apiURL}/${id}`);
+      // navigate(`${apiURL}/${id}`);
 
       toast.success("Novas informações cadastradas!", {
         position: "top-right",
@@ -86,7 +88,7 @@ function AddInfoReparacoes({ apiURL, id, form, setForm, reparacao }) {
         <Row>
           <Col>
             <Form.Group className="mb-3">
-              <Form.Label>Remuneração por mês</Form.Label>
+              <Form.Label>Informações sobre a medida de reparacao</Form.Label>
               <Form.Control
                 as="textarea"
                 placeholder="Insira as informações relevantes sobre o cumprimento da Medida de Reparação"
@@ -107,11 +109,11 @@ function AddInfoReparacoes({ apiURL, id, form, setForm, reparacao }) {
               >
                 <option value="0">Selecione uma opção</option>
                 <option value="Pendente de cumprimento">
-                  Pendente de Cumprimento
+                  Pendente de cumprimento
                 </option>
                 <option value="Cumprida">Cumprida</option>
                 <option value="Parcialmente cumprida">
-                  Parcialmente Cumprida
+                  Parcialmente cumprida
                 </option>
                 <option value="Descumprida">Descumprida</option>
               </Form.Select>

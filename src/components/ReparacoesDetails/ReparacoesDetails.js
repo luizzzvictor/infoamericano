@@ -152,13 +152,13 @@ function ReparacoesDetails({ apiURL, form, setForm }) {
         </Row>
       </Container>
       <Container>
-        <AddInfoReparacoes
+        {/* <AddInfoReparacoes
           apiURL={apiURL}
           form={form}
           setForm={setForm}
           reparacao={reparacao}
           id={id}
-        />
+        /> */}
       </Container>
       <Container>
         {isLoading && <Spinner className="mt-4" animation="border" />}
