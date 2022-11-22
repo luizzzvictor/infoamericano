@@ -33,6 +33,10 @@ function EditInfoReparacoes({ id, apiURL, form, setForm }) {
     e.preventDefault();
 
     try {
+      const clone = { ...form }
+      
+      delete clone._id
+
       await axios.put(`${apiURL}/${id}`, form);
 
       setShow(false);
