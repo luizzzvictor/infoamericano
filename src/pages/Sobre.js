@@ -36,7 +36,7 @@ function Sobre(props) {
           <Alert key={1} variant="light" className="text-center">
             A plataforma <b>InfoAmericano</b> foi criada pelos servidores do
             Judiciário Federal <a href="https://github.com/luizzzvictor">Luiz Silva</a> e{" "}
-            <a href="https://github.com/bgsrio">Bruno de Souza</a> como projeto FrontEnd do BootCamp de{" "}
+            <a href="https://github.com/bgsrio">Bruno de Sousa</a> como projeto FrontEnd do BootCamp de{" "}
             <em>WebDevelopment Full-Time</em> da IronHack São Paulo, em parceria
             com a Escola Nacional de Administração Pública - ENAP, entre Outubro
             e Dezembro de 2022.
