@@ -1,16 +1,19 @@
 import React from "react";
-import { Alert, Col, Container, Row } from "react-bootstrap";
+import { Alert, Col, Container, Image, Row } from "react-bootstrap";
 
 function Sobre(props) {
   return (
     <Container style={{ width: "80%" }}>
       <Row className="pt-5 d-flex justify-content-center align-items-center">
         <Col>
-          <img
+          <Image
             src="https://i.ytimg.com/vi/v3JV13-0-ZU/maxresdefault.jpg"
             alt="Cançado"
             className="mb-3"
-            style={{ width: "50%", borderRadius: "3px" }}
+            fluid
+            rounded
+            style={{width:"80%"}}
+            
           />
           <blockquote className="blockquote text-right">
             <p className="mb-0" style={{ textAlign: "justify" }}>
