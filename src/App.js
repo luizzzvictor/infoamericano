@@ -9,6 +9,8 @@ import NavigationBar from "./components/NavigationBar/NavigationBar";
 import { useState } from "react";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import Apresentacao from "./pages/Apresentacao";
+import Sobre from "./pages/Sobre";
 
 
 function App() {
@@ -28,6 +30,7 @@ function App() {
       <NavigationBar />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/inicial" element={<Apresentacao/>} />
         <Route path="*" element={<ErrorPage />} />
         <Route
           path="/reparacoes"
@@ -39,6 +42,7 @@ function App() {
             <ReparacoesDetails apiURL={apiURL} form={form} setForm={setForm} />
           }
         />
+        <Route path='/sobre' element={<Sobre/>} />
       </Routes>
     </div>
   );

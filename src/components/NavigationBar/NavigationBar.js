@@ -19,7 +19,14 @@ function NavigationBar(props) {
       variant="info"
     >
       <Container>
-        <Navbar.Brand href="#home">InfoAmericano</Navbar.Brand>
+        <Navbar.Brand
+          onClick={() => {
+            navigate(`/inicial`);
+          }}
+          style={{cursor:"pointer"}}
+        >
+          InfoAmericano
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
@@ -52,6 +59,13 @@ function NavigationBar(props) {
                 Monitoramento das Medidas de Reparação
               </NavDropdown.Item>
             </NavDropdown>
+            <Nav.Link
+              onClick={() => {
+                navigate(`/sobre`);
+              }}
+            >
+              Sobre
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
