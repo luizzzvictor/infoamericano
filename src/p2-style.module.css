@@ -15,7 +15,23 @@
 .inicial {
     font-family: 'Playfair Display';
     text-align: justify;
+    font-size: 2rem;
     border: none;
-    
+    padding: 2rem 3rem;
+    width: fit-content;
 }
 
+.navbar {
+    font-family: 'Playfair Display';
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: justify;
+    border: none;
+    padding: 1rem;
+    margin: 1rem;
+    background: rgb(32, 115, 223);
+    background: linear-gradient(0deg, rgb(34, 161, 193) 0%, rgba(45,56,149,0.4962359943977591) 70%)
+    /*background feito com https://cssgradient.io/*/
+    /*navbar continha o seguinte style: className="mb-5 bg-info bg-gradient bg-opacity-50"*/
+    /*não consegui alterar o tamanho do fonte do botão InfoAmericano*/
+}

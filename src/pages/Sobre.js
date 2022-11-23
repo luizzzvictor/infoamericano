@@ -1,19 +1,22 @@
 import React from "react";
-import { Alert, Col, Container, Row } from "react-bootstrap";
+import { Alert, Col, Container, Image, Row } from "react-bootstrap";
 
 function Sobre(props) {
   return (
     <Container style={{ width: "80%" }}>
       <Row className="pt-5 d-flex justify-content-center align-items-center">
         <Col>
-          <img
+          <Image
             src="https://i.ytimg.com/vi/v3JV13-0-ZU/maxresdefault.jpg"
             alt="Cançado"
             className="mb-3"
-            style={{ width: "50%", borderRadius: "3px" }}
+            fluid
+            rounded
+            style={{width:"80%"}}
+            
           />
           <blockquote className="blockquote text-right">
-            <p className="mb-0" style={{ textAlign: "justify" }}>
+            <p className="mb-0" style={{ textAlign: "justify", fontFamily: "Playfair Display" }}>
               É o dever daqueles de nós que ainda estão vivos resistir e lutar
               contra o esquecimento, tão comum nestes tempos efêmeros e
               pós-modernos. Os mortos precisam de nossa lealdade, eles são
@@ -33,7 +36,7 @@ function Sobre(props) {
           </blockquote>
         </Col>
         <Col>
-          <Alert key={1} variant="light" className="text-center">
+          <Alert key={1} variant="light" className="text-center" style={{fontFamily: "Playfair Display" }} >
             A plataforma <b>InfoAmericano</b> foi criada pelos servidores do
             Judiciário Federal <a href="https://github.com/luizzzvictor">Luiz Silva</a> e{" "}
             <a href="https://github.com/bgsrio">Bruno de Sousa</a> como projeto FrontEnd do BootCamp de{" "}

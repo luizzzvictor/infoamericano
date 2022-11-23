@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
+import styles from "../../p2-style.module.css";
 
 function NavigationBar(props) {
   const location = useLocation();
@@ -11,12 +12,12 @@ function NavigationBar(props) {
   }
 
   return (
-    <Navbar
+    <Navbar 
+      className= { styles.navbar }
       collapseOnSelect
       expand="lg"
-      className="mb-5 bg-info bg-gradient bg-opacity-50"
-      bg=""
-      variant="info"
+      
+      
     >
       <Container>
         <Navbar.Brand
@@ -36,8 +37,7 @@ function NavigationBar(props) {
               }}
             >
               Medidas de Reparacão por Caso
-            </Nav.Link>
-            <Nav.Link href="#pricing">Casos Brasileiros na Corte IDH</Nav.Link>
+            </Nav.Link>           
             <NavDropdown title="Links Úteis" id="collasible-nav-dropdown">
               <NavDropdown.Item
                 target="_blank"
