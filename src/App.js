@@ -7,6 +7,9 @@ import ErrorPage from "./pages/ErrorPage";
 import HomePage from "./pages/HomePage";
 import NavigationBar from "./components/NavigationBar/NavigationBar";
 import { useState } from "react";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function App() {
   const apiURL = "https://ironrest.cyclic.app/reparacoes";
@@ -21,6 +24,7 @@ function App() {
 
   return (
     <div className="App">
+    <ToastContainer/>
       <NavigationBar />
       <Routes>
         <Route path="/" element={<HomePage />} />

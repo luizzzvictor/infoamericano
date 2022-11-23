@@ -47,8 +47,8 @@ function EditInfoReparacoes({ id, apiURL, reparacao, setReparacao, infoIndex}) {
 
       delete clone._id;
 
-      clone.infos_cumprimento.splice(infoIndex,1)
-      clone.infos_cumprimento.push(form);
+      clone.infos_cumprimento.splice(infoIndex,1,form)
+      // clone.infos_cumprimento.push(form);
       
 
       console.log(clone)
