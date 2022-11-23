@@ -1,11 +1,10 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 function AddInfoReparacoes({ apiURL, id, reparacao, setReparacao }) {
-  const navigate = useNavigate();
+  
 
   const [form, setForm] = useState({
     tribunal: "",
@@ -17,8 +16,7 @@ function AddInfoReparacoes({ apiURL, id, reparacao, setReparacao }) {
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
-    // console.log(e.target.value)
-    // console.log(form);
+    
   };
 
   const handleSubmit = async (e) => {
@@ -33,9 +31,18 @@ function AddInfoReparacoes({ apiURL, id, reparacao, setReparacao }) {
       console.log(clone);
 
       await axios.put(`${apiURL}/${id}`, clone);
-      const response = await axios.get(`${apiURL}/${id}`);
 
+      const response = await axios.get(`${apiURL}/${id}`);
       setReparacao(response.data);
+
+      setForm({
+        tribunal: "",
+        unidade_judiciaria: "",
+        cargo_informante: "",
+        infos_relevantes: "",
+        notificar_status_cumprimento: "",
+      })
+    
 
       toast.success("Novas informações cadastradas!", {
         position: "top-right",

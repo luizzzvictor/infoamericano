@@ -28,9 +28,20 @@ function ReparacoesDetails({ apiURL, form, setForm }) {
   }, [apiURL, id]);
 
   // -------- FUNÇÃO PARA DELETAR ITEM --------
-  const deleteReparacao = async (id) => {
-    await axios.delete(`${apiURL}/${id}`);
-    navigate("/reparacoes/:id");
+  const deleteReparacao = async (index) => {
+    const clone = { ...reparacao };
+
+    delete clone._id;
+
+    clone.infos_cumprimento.splice(index, 1);
+
+    console.log(clone);
+
+    await axios.put(`${apiURL}/${id}`, clone);
+
+    const response = await axios.get(`${apiURL}/${id}`);
+    setReparacao(response.data);
+
     toast.success(
       "Informação sobre cumprimento de medidas deletada com sucesso!",
       {
@@ -102,6 +113,7 @@ function ReparacoesDetails({ apiURL, form, setForm }) {
                     apiURL={apiURL}
                     reparacao={reparacao}
                     setReparacao={setReparacao}
+                    infoIndex={index}
                   />
                 </Col>
                 <Col>
@@ -112,7 +124,7 @@ function ReparacoesDetails({ apiURL, form, setForm }) {
                 <Col>
                   <Button
                     variant="danger"
-                    onClick={() => deleteReparacao(reparacao._id)}
+                    onClick={() => deleteReparacao(index)}
                   >
                     Excluir Informação sobre Cumprimento
                   </Button>

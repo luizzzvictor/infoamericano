@@ -20,7 +20,7 @@ function ReparacoesList({ apiURL }) {
     try {
       const fetchReparacoes = async () => {
         const response = await axios.get(apiURL);
-        setReparacoes(response.data);
+        setReparacoes(response.data);      
         setIsLoading(false);
       };
       fetchReparacoes();
@@ -29,12 +29,10 @@ function ReparacoesList({ apiURL }) {
     }
   }, [apiURL]);
 
-  function contarEstadoCumprimento(arr, estado, casoDaMedida) {
-    // if (arr.caso === casoDaMedida) {
+  function contarEstadoCumprimento(arr, estado, casoDaMedida) {    
     return arr.filter(
       (v) => v.caso === casoDaMedida && v.estado_cumprimento === estado
-    ).length;
-    // }
+    ).length;    
   }
 
   //Código para renderizar apenas um Header para os items do Accordion, criei uma nova Array apenas com o valor da propriedade caso
@@ -82,7 +80,7 @@ function ReparacoesList({ apiURL }) {
                 reparacoes,
                 "Cumprida",
                 casoDaMedida
-              )}`}
+              )} ✅`}
               key={1}
               data-toggle="tooltip"
               data-placement="bottom"
@@ -119,7 +117,7 @@ function ReparacoesList({ apiURL }) {
                 reparacoes,
                 "Parcialmente cumprida",
                 casoDaMedida
-              )}`}
+              )} 🤏🏾`}
               key={4}
               data-toggle="tooltip"
               data-placement="bottom"
@@ -155,7 +153,7 @@ function ReparacoesList({ apiURL }) {
                 reparacoes,
                 "Pendente de cumprimento",
                 casoDaMedida
-              )}`}
+              )} ⚠️`}
               key={2}
               data-toggle="tooltip"
               data-placement="bottom"
@@ -192,7 +190,7 @@ function ReparacoesList({ apiURL }) {
                 reparacoes,
                 "Descumprida",
                 casoDaMedida
-              )}`}
+              )} 👎🏾`}
               key={3}
               data-toggle="tooltip"
               data-placement="bottom"
