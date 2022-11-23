@@ -6,11 +6,13 @@ import {
   Card,
   Col,
   Container,
+  Image,
   ListGroup,
   ProgressBar,
   Row,
   Spinner,
 } from "react-bootstrap";
+import { Chrono } from "react-chrono";
 import { useNavigate } from "react-router-dom";
 
 function ReparacoesList({ apiURL }) {
@@ -49,6 +51,54 @@ function ReparacoesList({ apiURL }) {
   //fonte: https://stackoverflow.com/questions/15125920/how-to-get-distinct-values-from-an-array-of-objects-in-javascript
   const apenasCasos = [...new Set(reparacoes.map((item) => item.caso))];
 
+  //renderizar linha do tempo
+  const linhaDoTempo = (caso) => {
+    const items = [
+      {
+        title: `Petição à CIDH: ${caso.cidh_peticao}`,
+        cardTitle: "Petição à CIDH",
+        cardSubtitle:
+          "A denúncia perante a CIDH deve ser apresentada contra um ou mais Estados membros da OEA que se considere terem violado os Direitos Humanos constantes da Declaração Americana, da Convenção Americana e de outros tratados interamericanos de Direitos Humanos",
+      },
+      {
+        title: `Admissibilidade: ${caso.cidh_admissibilidade}`,
+        cardTitle: "Relatório de Admissibilidade na CIDH",
+        cardSubtitle: "teste",
+      },
+      {
+        title: `Mérito: ${caso.cidh_merito}`,
+        cardTitle: "Relatório de Mérito na CIDH",
+        cardSubtitle: "teste",
+      },
+      {
+        title: `Submissão à Corte IDH: ${caso.cidh_submissao}`,
+        cardTitle: "Submissão à Corte IDH",
+        cardSubtitle: "teste",
+      },
+      {
+        title: `Sentença: ${caso.corte_sentenca}`,
+        cardTitle: "Sentença da Corte IDH",
+        cardSubtitle: "teste",
+      },
+    ];
+
+    return (
+      <Col style={{height: "200" }}>
+        <Chrono
+          items={items}
+          mode="HORIZONTAL"
+          borderLessCards="true"
+          cardPositionHorizontal="TOP"
+          cardHeight={50}
+          hideControls
+          cardLess
+          fontSizes={{title:"0.8rem"}}
+        />
+      </Col>
+    );
+  };
+
+  ///renderizar todos os casos
   const renderCasoHeader = apenasCasos.map((casoDaMedida) => {
     return (
       <Accordion.Item
@@ -62,23 +112,46 @@ function ReparacoesList({ apiURL }) {
             {casos.map((caso, index) => {
               if (caso.caso === casoDaMedida) {
                 return (
-                  <Row key={index} className="mb-3 d-flex justify-content-center align-items-center">
-                    <Col sm={4}>
-                      <img
-                        src={caso.imagem}
-                        style={{
-                          width: "80%",
-                          borderRadius: "5px",
-                          WebkitFilter: "grayscale(100%)",
-                          filter: "grayscale(100%)",
-                        }}
-                        alt={caso.caso}
-                      />
+                  <Container>
+                    <Row
+                      key={index}
+                      className="mb-3 d-flex justify-content-center align-items-center"
+                    >
+                      <Col>
+                        <Image
+                          src={caso.imagem}
+                          fluid
+                          rounded
+                          style={{
+                            WebkitFilter: "grayscale(100%)",
+                            filter: "grayscale(100%)",
+                            width: "80%",
+                          }}
+                          alt={caso.caso}
+                        />
+                      </Col>
+                      <Col style={{ textAlign: "justify" }}>
+                        <p>{caso.resumo_caso}</p>
+                      </Col>
+                    </Row>
+                    <Row
+                      className="mb-3 d-flex justify-content-center align-items-center"
+                      style={{ textAlign: "justify" }}
+                    >
+                    <Col>
+                      <div >
+                        <b>Vítimas:</b> {caso.vitimas}
+                      </div> 
+                      <div>
+                        <b>Representantes:</b> {caso.representantes}
+                      </div>
+                      <div>
+                        <b>Palavras-Chave:</b> ---
+                      </div>
                     </Col>
-                    <Col sm={7} style={{textAlign:"justify"}}>
-                      <p>{caso.resumo_caso}</p>
-                    </Col>
-                  </Row>
+                      <Col>{linhaDoTempo(caso)}</Col>
+                    </Row>
+                  </Container>
                 );
               }
             })}

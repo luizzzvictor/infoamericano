@@ -36,8 +36,7 @@ function NavigationBar(props) {
               }}
             >
               Medidas de Reparacão por Caso
-            </Nav.Link>
-            <Nav.Link href="#pricing">Casos Brasileiros na Corte IDH</Nav.Link>
+            </Nav.Link>           
             <NavDropdown title="Links Úteis" id="collasible-nav-dropdown">
               <NavDropdown.Item
                 target="_blank"
