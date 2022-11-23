@@ -1,11 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-function EditInfoReparacoes({ id, apiURL, reparacao, setReparacao}) {
-  const navigate = useNavigate();
+function EditInfoReparacoes({ id, apiURL, reparacao, setReparacao, infoIndex}) {  
 
   const [form, setForm] = useState({
     tribunal: "",
@@ -23,15 +21,15 @@ function EditInfoReparacoes({ id, apiURL, reparacao, setReparacao}) {
   const handleShow = () => setShow(true);
 
   // -------- USE EFFECT PARA REQUISIÇÃO --------
-  // useEffect(() => {
-  //   const fetchReparacao = async () => {
-  //     const response = await axios.get(`${apiURL}/${id}`);
-  //     console.log(response.data)
-  //     // setForm(response.data);
+  useEffect(() => {
+    const fetchReparacao = async () => {
+      const response = await axios.get(`${apiURL}/${id}`);
+      console.log(response.data)
+      setForm(response.data.infos_cumprimento[infoIndex]);
       
-  //   };
-  //   fetchReparacao();
-  // }, [apiURL, id]);
+    };
+    fetchReparacao();
+  }, [apiURL, id]);
 
   // monitoramento dos inputs do formulário
   const handleChange = (e) => {
@@ -49,14 +47,19 @@ function EditInfoReparacoes({ id, apiURL, reparacao, setReparacao}) {
 
       delete clone._id;
 
+      clone.infos_cumprimento.splice(infoIndex,1)
       clone.infos_cumprimento.push(form);
+      
 
       console.log(clone)
 
-      // await axios.put(`${apiURL}/${id}`, clone);
+      await axios.put(`${apiURL}/${id}`, clone);
+
+      const response = await axios.get(`${apiURL}/${id}`);
+      setReparacao(response.data);
 
       setShow(false);
-      // navigate(`/reparacoes/${id}`);
+      
       toast.success(
         "Informação sobre cumprimento de medidas atualizada com sucesso!",
         {

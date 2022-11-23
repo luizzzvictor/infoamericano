@@ -82,7 +82,7 @@ function ReparacoesList({ apiURL }) {
                 reparacoes,
                 "Cumprida",
                 casoDaMedida
-              )}`}
+              )} ✅`}
               key={1}
               data-toggle="tooltip"
               data-placement="bottom"
@@ -119,7 +119,7 @@ function ReparacoesList({ apiURL }) {
                 reparacoes,
                 "Parcialmente cumprida",
                 casoDaMedida
-              )}`}
+              )} 🤏🏾`}
               key={4}
               data-toggle="tooltip"
               data-placement="bottom"
@@ -155,7 +155,7 @@ function ReparacoesList({ apiURL }) {
                 reparacoes,
                 "Pendente de cumprimento",
                 casoDaMedida
-              )}`}
+              )} ⚠️`}
               key={2}
               data-toggle="tooltip"
               data-placement="bottom"
@@ -192,7 +192,7 @@ function ReparacoesList({ apiURL }) {
                 reparacoes,
                 "Descumprida",
                 casoDaMedida
-              )}`}
+              )} 👎🏾`}
               key={3}
               data-toggle="tooltip"
               data-placement="bottom"
