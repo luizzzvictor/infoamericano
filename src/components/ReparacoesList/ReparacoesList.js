@@ -4,35 +4,45 @@ import {
   Accordion,
   Badge,
   Card,
+  Col,
   Container,
   ListGroup,
   ProgressBar,
+  Row,
   Spinner,
 } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 function ReparacoesList({ apiURL }) {
   const [reparacoes, setReparacoes] = useState([]);
+  const [casos, setCasos] = useState([]);
+  const apiURLCasos = "https://ironrest.cyclic.app/casoscorteidh";
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
     try {
+      const fetchCasos = async () => {
+        const response = await axios.get(apiURLCasos);
+        setCasos(response.data);
+      };
+      fetchCasos();
+
       const fetchReparacoes = async () => {
         const response = await axios.get(apiURL);
-        setReparacoes(response.data);      
+        setReparacoes(response.data);
         setIsLoading(false);
       };
       fetchReparacoes();
     } catch (error) {
       console.log(error);
     }
-  }, [apiURL]);
+  }, [apiURL, apiURLCasos]);
 
-  function contarEstadoCumprimento(arr, estado, casoDaMedida) {    
+  function contarEstadoCumprimento(arr, estado, casoDaMedida) {
     return arr.filter(
       (v) => v.caso === casoDaMedida && v.estado_cumprimento === estado
-    ).length;    
+    ).length;
   }
 
   //Código para renderizar apenas um Header para os items do Accordion, criei uma nova Array apenas com o valor da propriedade caso
@@ -48,6 +58,32 @@ function ReparacoesList({ apiURL }) {
         <Accordion.Header>{casoDaMedida} </Accordion.Header>
 
         <Accordion.Body>
+          <Container>
+            {casos.map((caso, index) => {
+              if (caso.caso === casoDaMedida) {
+                return (
+                  <Row key={index} className="mb-3 d-flex justify-content-center align-items-center">
+                    <Col sm={4}>
+                      <img
+                        src={caso.imagem}
+                        style={{
+                          width: "80%",
+                          borderRadius: "5px",
+                          WebkitFilter: "grayscale(100%)",
+                          filter: "grayscale(100%)",
+                        }}
+                        alt={caso.caso}
+                      />
+                    </Col>
+                    <Col sm={7} style={{textAlign:"justify"}}>
+                      <p>{caso.resumo_caso}</p>
+                    </Col>
+                  </Row>
+                );
+              }
+            })}
+          </Container>
+
           <ProgressBar max={20} className="mb-3">
             <ProgressBar
               animated="true"
