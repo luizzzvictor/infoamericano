@@ -83,7 +83,7 @@ function ReparacoesList({ apiURL }) {
     ];
 
     return (
-      <Col style={{height: "200" }}>
+      <Col style={{ height: "200" }}>
         <Chrono
           items={items}
           mode="HORIZONTAL"
@@ -92,7 +92,7 @@ function ReparacoesList({ apiURL }) {
           cardHeight={50}
           hideControls
           cardLess
-          fontSizes={{title:"0.8rem"}}
+          fontSizes={{ title: "0.8rem" }}
         />
       </Col>
     );
@@ -138,17 +138,17 @@ function ReparacoesList({ apiURL }) {
                       className="mb-3 d-flex justify-content-center align-items-center"
                       style={{ textAlign: "justify" }}
                     >
-                    <Col>
-                      <div >
-                        <b>Vítimas:</b> {caso.vitimas}
-                      </div> 
-                      <div>
-                        <b>Representantes:</b> {caso.representantes}
-                      </div>
-                      <div>
-                        <b>Palavras-Chave:</b> ---
-                      </div>
-                    </Col>
+                      <Col>
+                        <div>
+                          <b>Vítimas:</b> {caso.vitimas}
+                        </div>
+                        <div>
+                          <b>Representantes:</b> {caso.representantes}
+                        </div>
+                        <div>
+                          <b>Palavras-Chave:</b> ---
+                        </div>
+                      </Col>
                       <Col>{linhaDoTempo(caso)}</Col>
                     </Row>
                   </Container>
@@ -386,7 +386,7 @@ function ReparacoesList({ apiURL }) {
   // /\ /\
 
   return (
-    <Container>
+    <Container style={{ fontFamily: "Playfair Display" }}>
       <Card className="text-center w-100">
         <Card.Header>
           <Card.Title className="m-0">
