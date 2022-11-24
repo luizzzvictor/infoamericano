@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { toast } from "react-toastify";
+import styles from "../../p2-style.module.css";
 
 function AddInfoReparacoes({ apiURL, id, reparacao, setReparacao }) {
   
@@ -61,7 +62,7 @@ function AddInfoReparacoes({ apiURL, id, reparacao, setReparacao }) {
 
   return (
     <Container>
-      <h2 className="my-5">Novas informações sobre Medida de Reparação</h2>
+      <h2 className={styles.listForm} >Novas informações sobre Medida de Reparação</h2>
       <Form onSubmit={handleSubmit}>
         <Row>
           <Col>

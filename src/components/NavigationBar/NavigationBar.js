@@ -15,6 +15,7 @@ function NavigationBar(props) {
     <Navbar className={styles.navbar} collapseOnSelect expand="lg">
       <Container>
         <Navbar.Brand
+          className={styles.navbarBtn}
           onClick={() => {
             navigate(`/inicial`);
           }}
@@ -26,6 +27,7 @@ function NavigationBar(props) {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link
+              className={styles.navbarBtn}
               onClick={() => {
                 navigate(`/reparacoes/`);
               }}
@@ -54,6 +56,7 @@ function NavigationBar(props) {
               </NavDropdown.Item>
             </NavDropdown>
             <Nav.Link
+              className={styles.navbarBtn}
               onClick={() => {
                 navigate(`/sobre`);
               }}

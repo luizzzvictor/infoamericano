@@ -140,7 +140,10 @@ function ReparacoesDetails({ apiURL, form, setForm }) {
   // -------- RENDERIZAÇÃO DE HTML --------
   return (
     <>
-      <Container className="p-4 my-4 text-bg-secondary text-white" style={{fontFamily: "Playfair Display" }} >
+      <Container
+        className="p-4 my-4 text-bg-secondary text-white"
+        style={{ fontFamily: "Playfair Display" }}
+      >
         <Row>
           <Col>
             <Card.Header>
@@ -151,9 +154,12 @@ function ReparacoesDetails({ apiURL, form, setForm }) {
           </Col>
         </Row>
       </Container>
-      <Container className="bg-light border" style={{fontFamily: "Playfair Display" }} >
+      <Container
+        className="bg-light border"
+        style={{ fontFamily: "Playfair Display" }}
+      >
         <Row>
-          <Col sm={10}>
+          <Col style={{ textAlign: "justify" }} sm={10}>
             <h6> {reparacao.reparacao}</h6>
           </Col>
           <Col sm={2}>
@@ -164,7 +170,9 @@ function ReparacoesDetails({ apiURL, form, setForm }) {
           </Col>
         </Row>
       </Container>
-      <Container style={{fontFamily: "Playfair Display" }} >
+      <Container
+        style={{ fontFamily: "Playfair Display", marginBottom: "2rem" }}
+      >
         <AddInfoReparacoes
           apiURL={apiURL}
           form={form}
@@ -174,7 +182,7 @@ function ReparacoesDetails({ apiURL, form, setForm }) {
           setReparacao={setReparacao}
         />
       </Container>
-      <Container style={{fontFamily: "Playfair Display" }} >
+      <Container style={{ fontFamily: "Playfair Display" }}>
         {isLoading && <Spinner className="mt-4" animation="border" />}
         {!isLoading && <Container>{allInfos}</Container>}
       </Container>
