@@ -3,8 +3,13 @@ import React, { useEffect, useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { toast } from "react-toastify";
 
-function EditInfoReparacoes({ id, apiURL, reparacao, setReparacao, infoIndex}) {  
-
+function EditInfoReparacoes({
+  id,
+  apiURL,
+  reparacao,
+  setReparacao,
+  infoIndex,
+}) {
   const [form, setForm] = useState({
     tribunal: "",
     unidade_judiciaria: "",
@@ -24,9 +29,8 @@ function EditInfoReparacoes({ id, apiURL, reparacao, setReparacao, infoIndex}) {
   useEffect(() => {
     const fetchReparacao = async () => {
       const response = await axios.get(`${apiURL}/${id}`);
-      console.log(response.data)
+      console.log(response.data);
       setForm(response.data.infos_cumprimento[infoIndex]);
-      
     };
     fetchReparacao();
   }, [apiURL, id]);
@@ -34,8 +38,7 @@ function EditInfoReparacoes({ id, apiURL, reparacao, setReparacao, infoIndex}) {
   // monitoramento dos inputs do formulário
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
-    console.log(form)
-    
+    console.log(form);
   };
 
   // envio do formulário
@@ -47,11 +50,10 @@ function EditInfoReparacoes({ id, apiURL, reparacao, setReparacao, infoIndex}) {
 
       delete clone._id;
 
-      clone.infos_cumprimento.splice(infoIndex,1,form)
+      clone.infos_cumprimento.splice(infoIndex, 1, form);
       // clone.infos_cumprimento.push(form);
-      
 
-      console.log(clone)
+      console.log(clone);
 
       await axios.put(`${apiURL}/${id}`, clone);
 
@@ -59,7 +61,7 @@ function EditInfoReparacoes({ id, apiURL, reparacao, setReparacao, infoIndex}) {
       setReparacao(response.data);
 
       setShow(false);
-      
+
       toast.success(
         "Informação sobre cumprimento de medidas atualizada com sucesso!",
         {
@@ -89,12 +91,16 @@ function EditInfoReparacoes({ id, apiURL, reparacao, setReparacao, infoIndex}) {
   };
   // renderização
   return (
-    <div>
+    <div style={{ fontFamily: "Playfair Display" }}>
       <Button variant="primary" onClick={handleShow}>
         Editar Informação
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        style={{ fontFamily: "Playfair Display" }}
+      >
         <Modal.Header closeButton>
           <Modal.Title>
             Editar informações sobre cumprimento de medidas

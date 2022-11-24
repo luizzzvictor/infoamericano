@@ -12,19 +12,13 @@ function NavigationBar(props) {
   }
 
   return (
-    <Navbar 
-      className= { styles.navbar }
-      collapseOnSelect
-      expand="lg"
-      
-      
-    >
+    <Navbar className={styles.navbar} collapseOnSelect expand="lg">
       <Container>
         <Navbar.Brand
           onClick={() => {
             navigate(`/inicial`);
           }}
-          style={{cursor:"pointer"}}
+          style={{ cursor: "pointer", fontSize: "1.5rem" }}
         >
           InfoAmericano
         </Navbar.Brand>
@@ -37,7 +31,7 @@ function NavigationBar(props) {
               }}
             >
               Medidas de Reparacão por Caso
-            </Nav.Link>           
+            </Nav.Link>
             <NavDropdown title="Links Úteis" id="collasible-nav-dropdown">
               <NavDropdown.Item
                 target="_blank"
