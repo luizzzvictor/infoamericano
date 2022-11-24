@@ -159,7 +159,7 @@ function ReparacoesDetails({ apiURL, form, setForm }) {
         style={{ fontFamily: "Playfair Display" }}
       >
         <Row>
-          <Col sm={10}>
+          <Col style={{ textAlign: "justify" }} sm={10}>
             <h6> {reparacao.reparacao}</h6>
           </Col>
           <Col sm={2}>
