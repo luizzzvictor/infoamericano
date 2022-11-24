@@ -30,8 +30,22 @@
     padding: 1rem;
     margin: 1rem;
     background: rgb(32, 115, 223);
-    background: linear-gradient(0deg, rgb(34, 161, 193) 0%, rgba(45,56,149,0.4962359943977591) 70%)
+    background: linear-gradient(0deg, rgb(34, 161, 193) 0%, rgba(45,56,149,0.5) 70%)
     /*background feito com https://cssgradient.io/*/
     /*navbar continha o seguinte style: className="mb-5 bg-info bg-gradient bg-opacity-50"*/
     /*não consegui alterar o tamanho do fonte do botão InfoAmericano*/
+}
+.navbarBtn:hover {
+  color: white;
+  overflow: hidden;
+  transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+}
+
+.listForm {
+    margin:2rem 0;
+    padding: 1rem;
+    background-color: #e9ecef;
+    background-clip: padding-box;
+    border: 1px solid #adb5bd;
+    border-radius: 0.5rem;
 }
