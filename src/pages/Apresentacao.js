@@ -1,10 +1,11 @@
 import React from "react";
 import { Alert, Container } from "react-bootstrap";
+import styles from "../p2-style.module.css";
 
 function Apresentacao(props) {
   return (
     <Container  style={{width: "80%"}}>
-      <Alert key={1} variant="light" className="text-center pt-5">
+      <Alert key={1} variant="light" className= { styles.inicial }>
         A plataforma <b>InfoAmericano</b> monitora as informações prestadas pelo
         <em>
           <b> Poder Judiciário brasileiro</b>

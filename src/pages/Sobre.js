@@ -16,7 +16,7 @@ function Sobre(props) {
             
           />
           <blockquote className="blockquote text-right">
-            <p className="mb-0" style={{ textAlign: "justify" }}>
+            <p className="mb-0" style={{ textAlign: "justify", fontFamily: "Playfair Display" }}>
               É o dever daqueles de nós que ainda estão vivos resistir e lutar
               contra o esquecimento, tão comum nestes tempos efêmeros e
               pós-modernos. Os mortos precisam de nossa lealdade, eles são
@@ -36,7 +36,7 @@ function Sobre(props) {
           </blockquote>
         </Col>
         <Col>
-          <Alert key={1} variant="light" className="text-center">
+          <Alert key={1} variant="light" className="text-center" style={{fontFamily: "Playfair Display" }} >
             A plataforma <b>InfoAmericano</b> foi criada pelos servidores do
             Judiciário Federal <a href="https://github.com/luizzzvictor">Luiz Silva</a> e{" "}
             <a href="https://github.com/bgsrio">Bruno de Sousa</a> como projeto FrontEnd do BootCamp de{" "}
