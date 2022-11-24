@@ -71,7 +71,7 @@ function ReparacoesList({ apiURL }) {
         cardSubtitle: "teste",
       },
       {
-        title: `Submissão à Corte IDH: ${caso.cidh_submissao}`,
+        title: `Submissão à Corte: ${caso.cidh_submissao}`,
         cardTitle: "Submissão à Corte IDH",
         cardSubtitle: "teste",
       },
@@ -90,7 +90,7 @@ function ReparacoesList({ apiURL }) {
           borderLessCards="true"
           cardPositionHorizontal="TOP"
           cardHeight={50}
-          hideControls
+          // hideControls
           cardLess
           fontSizes={{ title: "0.8rem" }}
         />
@@ -146,7 +146,13 @@ function ReparacoesList({ apiURL }) {
                           <b>Representantes:</b> {caso.representantes}
                         </div>
                         <div>
-                          <b>Palavras-Chave:</b> ---
+                          <b>Palavras-Chave:</b> {caso.palavras_chave.map((palavra) => {
+                            if (caso.palavras_chave.indexOf(palavra) === caso.palavras_chave.length-1 ) {
+                              return `${palavra}.`
+                            } else {
+                              return `${palavra}, `
+                            }
+                          })}
                         </div>
                       </Col>
                       <Col>{linhaDoTempo(caso)}</Col>
